@@ -11,7 +11,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        f'{package_name}.ui': ['*.ui', ]
+        f'{package_name}': ['*.ui', ]
     },
     license_files=[
         'LICENSE',

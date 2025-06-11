@@ -22,7 +22,7 @@ class DockerManagerWidget(QWidget):
         super().__init__(parent)
 
         # Load the UI objects from file
-        ui_file = files('docker_manager.ui').joinpath('docker_manager_widget.ui')
+        ui_file = files('docker_manager').joinpath('docker_manager_widget.ui')
         loadUi(ui_file, self)
 
         # Parse the available images to extract tags from the images matching the input image name
