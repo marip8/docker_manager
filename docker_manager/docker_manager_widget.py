@@ -51,9 +51,14 @@ class DockerManagerWidget(QWidget):
 
     def _create_image_map(self):
         """"""
-        image_map = {}
+        image_map = dict[str, set[str]]()
         for image in self._client.images.list():
-            image_map.update(create_image_map(image))
+            for k, v in create_image_map(image).items():
+                if k in image_map:
+                    for tag in v:
+                        image_map[k].add(tag)
+                else:
+                    image_map.update(create_image_map(image))
 
         return image_map
 

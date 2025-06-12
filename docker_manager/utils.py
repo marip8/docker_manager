@@ -2,20 +2,20 @@ import os
 from docker.models.images import Image
 
 
-def create_image_map(image: Image) -> dict:
+def create_image_map(image: Image) -> dict[str, set[str]]:
     """ Creates a dictionary of image repository names to image tags
 
     """
-    image_map = {}
+    image_map = dict()
     for tag in image.tags:
         sub_tags = tag.split(':')
         image_name = ''.join(sub_tags[:-1])
         tag_name = sub_tags[-1]
 
         if image_name in image_map:
-            image_map[image_name].append(tag_name)
+            image_map[image_name].add(tag_name)
         else:
-            image_map[image_name] = [tag_name, ]
+            image_map[image_name] = {tag_name}
 
     return image_map
 
